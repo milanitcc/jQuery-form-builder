@@ -69,9 +69,18 @@ jQuery(function ($) {
         templates,
         onSave: function (evt, formData) {
 
-            console.log(formData);
+            var formRenderOpts = {
+                dataType: 'xml',
+                formData: formData,
+                render: true
+            };
+
+            var renderedForm = $('<div>');
+            renderedForm.formRender(formRenderOpts);
+            renderedForm.html();
+            $('#preview_form').append(renderedForm);
             // toggleEdit();
-            $('.render-wrap').formRender({ formData });
+            // $('.render-wrap').formRender({ formData });
         },
     });
 });
